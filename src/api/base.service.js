@@ -7,4 +7,4 @@ let apiBase = ($rootScope) => {
   };
 };
 
-angular.module('foodbox.store.api').factory('apiBase', apiBase);
+angular.module('foodbox.store.api').factory('ApiBase', apiBase);
