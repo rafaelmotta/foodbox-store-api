@@ -1,0 +1,20 @@
+{
+  "name": "foodbox-store-api",
+  "version": "0.0.1",
+  "authors": [
+    "Rafael Motta <rafaelmotta021@gmail.com>"
+  ],
+  "description": "AngularJS rest client api",
+  "main": "foodbox-store-api.js",
+  "moduleType": [
+    "es6"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
