@@ -17,4 +17,4 @@ let registrationApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('registrationApi', RegistrationApi);
+angular.module('foodbox.store.api').factory('registrationApi', registrationApi);

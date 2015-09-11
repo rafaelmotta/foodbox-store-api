@@ -22,4 +22,4 @@ let meCartApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('meCartApi', MeCartApi);
+angular.module('foodbox.store.api').factory('meCartApi', meCartApi);

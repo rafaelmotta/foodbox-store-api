@@ -19,4 +19,4 @@ let passwordApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('passwordApi', PasswordApi);
+angular.module('foodbox.store.api').factory('passwordApi', passwordApi);

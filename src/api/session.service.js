@@ -29,4 +29,4 @@ let sessionApi = (Restangular, $q, $interval, $window, popup) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('sessionApi', SessionApi);
+angular.module('foodbox.store.api').factory('sessionApi', sessionApi);

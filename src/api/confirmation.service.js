@@ -18,4 +18,4 @@ let confirmationApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('confirmationApi', ConfirmationApi);
+angular.module('foodbox.store.api').factory('confirmationApi', confirmationApi);

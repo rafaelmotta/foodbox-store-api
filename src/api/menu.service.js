@@ -10,4 +10,4 @@ let menuApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('menuApi', MenuApi);
+angular.module('foodbox.store.api').factory('menuApi', menuApi);

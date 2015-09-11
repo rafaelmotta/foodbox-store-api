@@ -9,4 +9,4 @@ let storeApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('storeApi', StoreApi);
+angular.module('foodbox.store.api').factory('storeApi', storeApi);

@@ -36,4 +36,4 @@ let meAddressApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('meAddressApi', MeAddressApi);
+angular.module('foodbox.store.api').factory('meAddressApi', meAddressApi);

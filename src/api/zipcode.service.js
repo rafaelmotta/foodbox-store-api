@@ -8,4 +8,4 @@ let zipcodeApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('zipcodeApi', ZipcodeApi);
+angular.module('foodbox.store.api').factory('zipcodeApi', zipcodeApi);

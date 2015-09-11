@@ -47,7 +47,7 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
   })())();
 };
 
-angular.module('foodbox.store.api').factory('confirmationApi', ConfirmationApi);
+angular.module('foodbox.store.api').factory('confirmationApi', confirmationApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -84,7 +84,7 @@ var meApi = function meApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('meApi', MeApi);
+angular.module('foodbox.store.api').factory('meApi', meApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -123,7 +123,7 @@ var meAddressApi = function meAddressApi(Restangular) {
   })())();
 };
 
-angular.module('foodbox.store.api').factory('meAddressApi', MeAddressApi);
+angular.module('foodbox.store.api').factory('meAddressApi', meAddressApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -162,7 +162,7 @@ var meCartApi = function meCartApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('meCartApi', MeCartApi);
+angular.module('foodbox.store.api').factory('meCartApi', meCartApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -243,7 +243,7 @@ var meCartItemApi = function meCartItemApi(Restangular, ApiBase, $q) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('meCartItemApi', MeCartItemApi);
+angular.module('foodbox.store.api').factory('meCartItemApi', meCartItemApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -275,7 +275,7 @@ var menuApi = function menuApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('menuApi', MenuApi);
+angular.module('foodbox.store.api').factory('menuApi', menuApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -346,7 +346,7 @@ var passwordApi = function passwordApi(Restangular) {
   })())();
 };
 
-angular.module('foodbox.store.api').factory('passwordApi', PasswordApi);
+angular.module('foodbox.store.api').factory('passwordApi', passwordApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -375,7 +375,7 @@ var registrationApi = function registrationApi(Restangular) {
   })())();
 };
 
-angular.module('foodbox.store.api').factory('registrationApi', RegistrationApi);
+angular.module('foodbox.store.api').factory('registrationApi', registrationApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -421,7 +421,7 @@ var sessionApi = function sessionApi(Restangular, $q, $interval, $window, popup)
   })())();
 };
 
-angular.module('foodbox.store.api').factory('sessionApi', SessionApi);
+angular.module('foodbox.store.api').factory('sessionApi', sessionApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -453,7 +453,7 @@ var storeApi = function storeApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('storeApi', StoreApi);
+angular.module('foodbox.store.api').factory('storeApi', storeApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -485,7 +485,7 @@ var storeProductApi = function storeProductApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('foodbox.store.api').factory('storeProductApi', StoreProductApi);
+angular.module('foodbox.store.api').factory('storeProductApi', storeProductApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -509,4 +509,4 @@ var zipcodeApi = function zipcodeApi(Restangular) {
   })())();
 };
 
-angular.module('foodbox.store.api').factory('zipcodeApi', ZipcodeApi);
+angular.module('foodbox.store.api').factory('zipcodeApi', zipcodeApi);
