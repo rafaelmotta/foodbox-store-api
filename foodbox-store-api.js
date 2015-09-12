@@ -2,8 +2,12 @@
 
 angular.module('foodbox.store.api', []);
 
-angular.module('foodbox.store.api').config(function (RestangularProvider) {
-  RestangularProvider.setBaseUrl('http://speedy.com.br');
+angular.module('foodbox.store.api').constant('constants', {
+  baseUrl: "http://speedy.com.br"
+});
+
+angular.module('foodbox.store.api').config(function (constants, RestangularProvider) {
+  RestangularProvider.setBaseUrl(constants.baseUrl);
 });
 'use strict';
 
@@ -48,6 +52,52 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
 };
 
 angular.module('foodbox.store.api').factory('confirmationApi', confirmationApi);
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, constants) {
+  return new ((function () {
+    function LoginApi() {
+      _classCallCheck(this, LoginApi);
+    }
+
+    _createClass(LoginApi, [{
+      key: 'loginWithEmail',
+      value: function loginWithEmail(data) {
+        Restangular.service('sessions/sign_in').post({ costumer: data });
+      }
+    }, {
+      key: 'loginWithFacebook',
+      value: function loginWithFacebook() {
+        return $q(function (resolve, reject) {
+          return popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
+            var fetchInterval = $interval(function () {
+              popup.postMessage('fetch', constants.baseUrl);
+            }, 1000);
+
+            $window.addEventListener('message', function (e) {
+              $interval.cancel(fetchInterval);
+
+              if (e.origin != constants.baseUrl) {
+                return false;
+              }
+
+              popup.close();
+              resolve(e.data, { provider: 'Facebook' });
+            }, false);
+          });
+        });
+      }
+    }]);
+
+    return LoginApi;
+  })())();
+};
+
+angular.module('foodbox.store.api').factory('loginApi', loginApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -384,52 +434,6 @@ var registrationApi = function registrationApi(Restangular, ApiBase) {
 };
 
 angular.module('foodbox.store.api').factory('registrationApi', registrationApi);
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var sessionApi = function sessionApi(Restangular, $q, $interval, $window, popup) {
-  return new ((function () {
-    function SessionApi() {
-      _classCallCheck(this, SessionApi);
-    }
-
-    _createClass(SessionApi, [{
-      key: 'loginWithEmail',
-      value: function loginWithEmail(data) {
-        Restangular.service('sessions/sign_in').post({ costumer: data });
-      }
-    }, {
-      key: 'loginWithFacebook',
-      value: function loginWithFacebook() {
-        return $q(function (resolve, reject) {
-          return popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
-            var fetchInterval = $interval(function () {
-              popup.postMessage('fetch', constants.baseUrl);
-            }, 1000);
-
-            $window.addEventListener('message', function (e) {
-              $interval.cancel(fetchInterval);
-
-              if (e.origin != constants.baseUrl) {
-                return false;
-              }
-
-              popup.close();
-              resolve(e.data, { provider: 'Facebook' });
-            }, false);
-          });
-        });
-      }
-    }]);
-
-    return SessionApi;
-  })())();
-};
-
-angular.module('foodbox.store.api').factory('sessionApi', sessionApi);
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
