@@ -5,8 +5,7 @@ let passwordApi = (Restangular) => {
       return Restangular
         .one('costumers')
         .one('sessions')
-        .one('password')
-        .post({ costumer: data });
+        .post('password', { costumer: data });
     }
 
     update(data) {

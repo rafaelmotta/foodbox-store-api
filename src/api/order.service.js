@@ -23,8 +23,7 @@ let orderApi = (Restangular, ApiBase) => {
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('me')
-        .one('orders')
-        .post({ order: order });
+        .post('orders', { order: order });
     }
   }
 };

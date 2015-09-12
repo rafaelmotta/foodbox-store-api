@@ -4,8 +4,7 @@ let registrationApi = (Restangular) => {
     create(data) {
       return Restangular
         .one('costumers')
-        .one('sessions')
-        .post({ costumer: data });
+        .post('sessions', { costumer: data });
     }
 
     update(data) {

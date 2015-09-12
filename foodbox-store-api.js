@@ -39,7 +39,7 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
     }, {
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').one('sessions').one('confirmation').post({ costumer: data });
+        return Restangular.one('costumers').one('sessions').post('confirmation', { costumer: data });
       }
     }]);
 
@@ -309,7 +309,7 @@ var orderApi = function orderApi(Restangular, ApiBase) {
     }, {
       key: 'create',
       value: function create(order) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('orders').post({ order: order });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').post('orders', { order: order });
       }
     }]);
 
@@ -333,7 +333,7 @@ var passwordApi = function passwordApi(Restangular) {
     _createClass(PasswordApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').one('sessions').one('password').post({ costumer: data });
+        return Restangular.one('costumers').one('sessions').post('password', { costumer: data });
       }
     }, {
       key: 'update',
@@ -362,7 +362,7 @@ var registrationApi = function registrationApi(Restangular) {
     _createClass(RegistrationApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').one('sessions').post({ costumer: data });
+        return Restangular.one('costumers').post('sessions', { costumer: data });
       }
     }, {
       key: 'update',

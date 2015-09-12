@@ -12,8 +12,7 @@ let confirmationApi = (Restangular, ApiBase) => {
       return Restangular
         .one('costumers')
         .one('sessions')
-        .one('confirmation')
-        .post({ costumer: data });
+        .post('confirmation', { costumer: data });
     }
   }
 };
