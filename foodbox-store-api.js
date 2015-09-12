@@ -227,7 +227,7 @@ var meCartItemApi = function meCartItemApi(Restangular, ApiBase, $q) {
         if (params === undefined) params = {};
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
-          return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('me').one('cart').one('cart_items', cartItem.id).patch({ car_item: serializedCartItem });
+          return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('me').one('cart').one('cart_items', cartItem.id).patch(angular.extend({ cart_item: serializedCartItem }, params));
         });
       }
     }, {
@@ -235,7 +235,7 @@ var meCartItemApi = function meCartItemApi(Restangular, ApiBase, $q) {
       value: function destroy(params, cartItem) {
         if (params === undefined) params = {};
 
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').one('cart_items', cartItem.id).remove();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').one('cart_items', cartItem.id).remove(params);
       }
     }]);
 
