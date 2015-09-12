@@ -44,7 +44,7 @@ let meCartItemApi = (Restangular, ApiBase, $q) => {
           .one('me')
           .one('cart')
           .one('cart_items', cartItem.id)
-          .patch({ car_item: serializedCartItem });
+          .patch(angular.extend({ cart_item: serializedCartItem }, params));
       });
     }
 
@@ -55,7 +55,7 @@ let meCartItemApi = (Restangular, ApiBase, $q) => {
         .one('me')
         .one('cart')
         .one('cart_items', cartItem.id)
-        .remove();
+        .remove(params);
     }
   }
 };
