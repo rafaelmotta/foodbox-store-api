@@ -1,9 +1,9 @@
 let loginApi = (Restangular, $q, $interval, $window, popup, constants) => {
   return new class LoginApi {
     loginWithEmail(data) {
-      Restangular
-        .service('sessions/sign_in')
-        .post({ costumer: data });
+      return Restangular
+        .one('sessions')
+        .post('sign_in', { costumer: data });
     }
 
     loginWithFacebook() {
