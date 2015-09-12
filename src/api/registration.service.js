@@ -4,7 +4,7 @@ let registrationApi = (Restangular, ApiBase) => {
     create(data) {
       return Restangular
         .one('costumers')
-        .post('sessions', { costumer: angular.extend(data, { company_id: this.company.id })});
+        .post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
     }
 
     update(data) {

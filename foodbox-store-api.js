@@ -370,7 +370,7 @@ var registrationApi = function registrationApi(Restangular, ApiBase) {
     _createClass(RegistrationApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').post('sessions', { costumer: angular.extend(data, { company_id: $rootScope.company.id }) });
+        return Restangular.one('costumers').post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
       }
     }, {
       key: 'update',
