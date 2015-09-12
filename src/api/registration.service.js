@@ -1,10 +1,10 @@
-let registrationApi = (Restangular) => {
-  return new class RegistrationApi {
+let registrationApi = (Restangular, ApiBase) => {
+  return new class RegistrationApi extends ApiBase {
 
     create(data) {
       return Restangular
         .one('costumers')
-        .post('sessions', { costumer: data });
+        .post('sessions', { costumer: angular.extend(data, { company_id: $rootScope.company.id })});
     }
 
     update(data) {
