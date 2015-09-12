@@ -7,8 +7,8 @@ let sessionApi = (Restangular, $q, $interval, $window, popup) => {
     }
 
     loginWithFacebook() {
-      $q((resolve, reject) => {
-        popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then((popup) => {
+      return $q((resolve, reject) => {
+        return popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then((popup) => {
           let fetchInterval = $interval(() => {
             popup.postMessage('fetch', constants.baseUrl);
           }, 1000);

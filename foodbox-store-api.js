@@ -370,12 +370,12 @@ var registrationApi = function registrationApi(Restangular, ApiBase) {
     _createClass(RegistrationApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
+        return Restangular.service('sessions').post({ costumer: angular.extend(data, { company_id: this.company.id }) });
       }
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('sessions').patch({ costumer: data });
+        return Restangular.service('sessions').patch({ costumer: data });
       }
     }]);
 
@@ -404,8 +404,8 @@ var sessionApi = function sessionApi(Restangular, $q, $interval, $window, popup)
     }, {
       key: 'loginWithFacebook',
       value: function loginWithFacebook() {
-        $q(function (resolve, reject) {
-          popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
+        return $q(function (resolve, reject) {
+          return popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
             var fetchInterval = $interval(function () {
               popup.postMessage('fetch', constants.baseUrl);
             }, 1000);
