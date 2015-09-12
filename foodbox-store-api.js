@@ -67,7 +67,7 @@ var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, con
     _createClass(LoginApi, [{
       key: 'loginWithEmail',
       value: function loginWithEmail(data) {
-        Restangular.service('sessions/sign_in').post({ costumer: data });
+        return Restangular.one('sessions').post('sign_in', { costumer: data });
       }
     }, {
       key: 'loginWithFacebook',
