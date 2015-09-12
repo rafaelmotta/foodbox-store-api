@@ -34,12 +34,12 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
     _createClass(ConfirmationApi, [{
       key: 'fetch',
       value: function fetch(confirmationToken) {
-        return Restangular.one('costumers').one('sessions').one('confirmation?confirmation_token=' + confirmationToken).get();
+        return Restangular.one('sessions').one('confirmation?confirmation_token=' + confirmationToken).get();
       }
     }, {
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').one('sessions').post('confirmation', { costumer: data });
+        return Restangular.one('sessions').post('confirmation', { costumer: data });
       }
     }]);
 
@@ -333,12 +333,12 @@ var passwordApi = function passwordApi(Restangular) {
     _createClass(PasswordApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').one('sessions').post('password', { costumer: data });
+        return Restangular.one('sessions').post('password', { costumer: data });
       }
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('costumers').one('sessions').one('confirmation').patch({ costumer: data });
+        return Restangular.one('sessions').one('confirmation').patch({ costumer: data });
       }
     }]);
 
@@ -370,12 +370,12 @@ var registrationApi = function registrationApi(Restangular, ApiBase) {
     _createClass(RegistrationApi, [{
       key: 'create',
       value: function create(data) {
-        return Restangular.one('costumers').post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
+        return Restangular.post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
       }
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('costumers').one('sessions').patch({ costumer: data });
+        return Restangular.one('sessions').patch({ costumer: data });
       }
     }]);
 
@@ -399,13 +399,13 @@ var sessionApi = function sessionApi(Restangular, $q, $interval, $window, popup)
     _createClass(SessionApi, [{
       key: 'loginWithEmail',
       value: function loginWithEmail(data) {
-        Restangular.service('costumers/sessions/sign_in').post({ costumer: data });
+        Restangular.service('sessions/sign_in').post({ costumer: data });
       }
     }, {
       key: 'loginWithFacebook',
       value: function loginWithFacebook() {
         $q(function (resolve, reject) {
-          popup.open("http://speedy.com.br/costumers/sessions/auth/facebook", 600, 600).then(function (popup) {
+          popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
             var fetchInterval = $interval(function () {
               popup.postMessage('fetch', constants.baseUrl);
             }, 1000);

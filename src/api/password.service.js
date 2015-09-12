@@ -3,14 +3,12 @@ let passwordApi = (Restangular) => {
 
     create(data) {
       return Restangular
-        .one('costumers')
         .one('sessions')
         .post('password', { costumer: data });
     }
 
     update(data) {
       return Restangular
-        .one('costumers')
         .one('sessions')
         .one('confirmation')
         .patch({ costumer: data });

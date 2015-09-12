@@ -2,7 +2,6 @@ let confirmationApi = (Restangular, ApiBase) => {
   return new class ConfirmationApi {
     fetch(confirmationToken) {
       return Restangular
-        .one('costumers')
         .one('sessions')
         .one(`confirmation?confirmation_token=${confirmationToken}`)
         .get();
@@ -10,7 +9,6 @@ let confirmationApi = (Restangular, ApiBase) => {
 
     create(data) {
       return Restangular
-        .one('costumers')
         .one('sessions')
         .post('confirmation', { costumer: data });
     }

@@ -3,13 +3,11 @@ let registrationApi = (Restangular, ApiBase) => {
 
     create(data) {
       return Restangular
-        .one('costumers')
         .post('sessions', { costumer: angular.extend(data, { company_id: this.company.id }) });
     }
 
     update(data) {
       return Restangular
-        .one('costumers')
         .one('sessions')
         .patch({ costumer: data });
     }
