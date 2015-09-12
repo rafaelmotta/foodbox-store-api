@@ -1,5 +1,5 @@
-let sessionApi = (Restangular, $q, $interval, $window, popup) => {
-  return new class SessionApi {
+let loginApi = (Restangular, $q, $interval, $window, popup, constants) => {
+  return new class LoginApi {
     loginWithEmail(data) {
       Restangular
         .service('sessions/sign_in')
@@ -29,4 +29,4 @@ let sessionApi = (Restangular, $q, $interval, $window, popup) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('sessionApi', sessionApi);
+angular.module('foodbox.store.api').factory('loginApi', loginApi);
