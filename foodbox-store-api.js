@@ -317,7 +317,7 @@ var meOrderApi = function meOrderApi(Restangular, ApiBase) {
     _createClass(MeOrderApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('orders');
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('orders').get();
       }
     }, {
       key: 'show',

@@ -6,7 +6,8 @@ let meOrderApi = (Restangular, ApiBase) => {
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('me')
-        .one('orders');
+        .one('orders')
+        .get();
     }
 
     show(params = {}) {
