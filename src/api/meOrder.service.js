@@ -16,6 +16,7 @@ let meOrderApi = (Restangular, ApiBase) => {
         .one('stores', this.store.id)
         .one('me')
         .one('orders', order.public_number)
+        .get();
     }
 
     create(order) {
