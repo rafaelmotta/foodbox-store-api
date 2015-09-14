@@ -10,13 +10,12 @@ let meOrderApi = (Restangular, ApiBase) => {
         .get();
     }
 
-    show(params = {}) {
+    show(order) {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('me')
-        .one('orders')
-        .get(params);
+        .one('orders', order.public_number)
     }
 
     create(order) {
