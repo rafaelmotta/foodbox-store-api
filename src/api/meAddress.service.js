@@ -22,7 +22,7 @@ let meAddressApi = (Restangular, ApiBase) => {
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('me')
-        .one('addresses')
+        .one('addresses', address.id)
         .patch({ address: address });
     }
 
