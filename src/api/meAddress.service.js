@@ -1,5 +1,5 @@
-let meAddressApi = (Restangular) => {
-  return new class MeAddressApi {
+let meAddressApi = (Restangular, ApiBase) => {
+  return new class MeAddressApi extends ApiBase {
     fetch() {
       return Restangular
         .one('companies', this.company.id)
