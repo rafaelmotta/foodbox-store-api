@@ -168,7 +168,7 @@ var meAddressApi = function meAddressApi(Restangular, ApiBase) {
     }, {
       key: 'update',
       value: function update(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').patch({ address: address });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('addresses').patch({ address: address });
       }
     }, {
       key: 'remove',
