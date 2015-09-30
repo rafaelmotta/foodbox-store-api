@@ -1,6 +1,39 @@
 let meCartItemApi = (Restangular, ApiBase, $q) => {
   return new class MeCartItemApi extends ApiBase {
 
+    create(params = {}, cartItem) {
+      return this._serialize(cartItem).then((serializedCartItem) => {
+        return Restangular
+          .one('companies', this.company.id)
+          .one('stores', this.store.id)
+          .one('me')
+          .one('cart')
+          .post(`cart_items?cart_id=${params.cart_id}`, { cart_item: serializedCartItem });
+      });
+    }
+
+    update(cartItem, params = {}) {
+      return this._serialize(cartItem).then( (serializedCartItem) => {
+        return Restangular
+          .one('companies', this.company.id)
+          .one('stores', this.store.id)
+          .one('me')
+          .one('cart')
+          .one('cart_items', cartItem.id)
+          .patch(angular.extend({ cart_item: serializedCartItem }, params));
+      });
+    }
+
+    destroy(cartItem, params = {}) {
+      return Restangular
+        .one('companies', this.company.id)
+        .one('stores', this.store.id)
+        .one('me')
+        .one('cart')
+        .one('cart_items', cartItem.id)
+        .remove(params);
+    }
+
     _serialize(cartItem) {
       return $q((resolve, reject) => {
         let data = {};
@@ -23,39 +56,6 @@ let meCartItemApi = (Restangular, ApiBase, $q) => {
 
         resolve(data);
       });
-    }
-
-    create(params = {}, cartItem) {
-      return this._serialize(cartItem).then((serializedCartItem) => {
-        return Restangular
-          .one('companies', this.company.id)
-          .one('stores', this.store.id)
-          .one('me')
-          .one('cart')
-          .post(`cart_items?cart_id=${params.cart_id}`, { cart_item: serializedCartItem });
-      });
-    }
-
-    update(params = {}, cartItem) {
-      return this._serialize(cartItem).then( (serializedCartItem) => {
-        return Restangular
-          .one('companies', this.company.id)
-          .one('stores', this.store.id)
-          .one('me')
-          .one('cart')
-          .one('cart_items', cartItem.id)
-          .patch(angular.extend({ cart_item: serializedCartItem }, params));
-      });
-    }
-
-    destroy(params = {}, cartItem) {
-      return Restangular
-        .one('companies', this.company.id)
-        .one('stores', this.store.id)
-        .one('me')
-        .one('cart')
-        .one('cart_items', cartItem.id)
-        .remove(params);
     }
   }
 };
