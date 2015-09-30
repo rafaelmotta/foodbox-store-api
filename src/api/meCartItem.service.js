@@ -1,7 +1,7 @@
 let meCartItemApi = (Restangular, ApiBase, $q) => {
   return new class MeCartItemApi extends ApiBase {
 
-    create(params = {}, cartItem) {
+    create(cartItem, params = {}) {
       return this._serialize(cartItem).then((serializedCartItem) => {
         return Restangular
           .one('companies', this.company.id)
@@ -11,6 +11,7 @@ let meCartItemApi = (Restangular, ApiBase, $q) => {
           .post(`cart_items?cart_id=${params.cart_id}`, { cart_item: serializedCartItem });
       });
     }
+
 
     update(cartItem, params = {}) {
       return this._serialize(cartItem).then( (serializedCartItem) => {
