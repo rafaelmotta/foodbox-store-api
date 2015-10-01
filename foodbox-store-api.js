@@ -37,8 +37,8 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
 
     _createClass(ConfirmationApi, [{
       key: 'fetch',
-      value: function fetch(confirmationToken) {
-        return Restangular.one('sessions').one('confirmation?confirmation_token=' + confirmationToken).get();
+      value: function fetch(data) {
+        return Restangular.one('sessions').one('confirmation').get(data);
       }
     }, {
       key: 'create',
@@ -73,7 +73,7 @@ var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, con
       key: 'loginWithFacebook',
       value: function loginWithFacebook() {
         return $q(function (resolve, reject) {
-          return popup.open("http://speedy.com.br/sessions/auth/facebook", 600, 600).then(function (popup) {
+          return popup.open(constants.baseUrl + '/sessions/auth/facebook', 600, 600).then(function (popup) {
             var fetchInterval = $interval(function () {
               popup.postMessage('fetch', constants.baseUrl);
             }, 1000);

@@ -1,10 +1,10 @@
 let confirmationApi = (Restangular, ApiBase) => {
   return new class ConfirmationApi {
-    fetch(confirmationToken) {
+    fetch(data) {
       return Restangular
         .one('sessions')
-        .one(`confirmation?confirmation_token=${confirmationToken}`)
-        .get();
+        .one('confirmation')
+        .get(data);
     }
 
     create(data) {
