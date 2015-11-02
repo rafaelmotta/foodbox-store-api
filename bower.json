@@ -1,11 +1,11 @@
 {
-  "name": "foodbox-store-api",
+  "name": "store-api-client-foodio",
   "version": "0.0.1",
   "authors": [
     "Rafael Motta <rafaelmotta021@gmail.com>"
   ],
   "description": "AngularJS rest client api",
-  "main": "foodbox-store-api.js",
+  "main": "store-api-client-foodio.js",
   "moduleType": [
     "es6"
   ],

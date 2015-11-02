@@ -15,10 +15,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var apiBase = function apiBase($rootScope) {
   return function ApiBase() {
+    var _this = this;
+
     _classCallCheck(this, ApiBase);
 
     this.company = $rootScope.company;
     this.store = $rootScope.currentStore;
+
+    $rootScope.$watch('currentStore', function (store) {
+      if (store) _this.store = store;
+    });
+
+    $rootScope.$watch('company', function (company) {
+      if (company) _this.company = company;
+    });
   };
 };
 
