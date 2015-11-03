@@ -2,9 +2,12 @@
 
 angular.module('store.api.client.foodio', ['constants.foodio']);
 
-angular.module('store.api.client.foodio').config(function (constants, RestangularProvider) {
+var bootstrap = function bootstrap(constants, RestangularProvider) {
   RestangularProvider.setBaseUrl(constants.api);
-});
+};
+
+angular.module('store.api.client.foodio').config(bootstrap);
+bootstrap.$inject = ['constants', 'RestangularProvider'];
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
