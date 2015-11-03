@@ -1,19 +1,15 @@
 'use strict';
 
-angular.module('store.api.client.foodio', []);
-
-angular.module('store.api.client.foodio').constant('constants', {
-  baseUrl: "http://speedy.com.br"
-});
+angular.module('store.api.client.foodio', ['constants.foodio']);
 
 angular.module('store.api.client.foodio').config(function (constants, RestangularProvider) {
-  RestangularProvider.setBaseUrl(constants.baseUrl);
+  RestangularProvider.setBaseUrl(constants.api);
 });
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var apiBase = function apiBase($rootScope) {
+var api = function api($rootScope) {
   return function ApiBase() {
     var _this = this;
 
@@ -32,14 +28,15 @@ var apiBase = function apiBase($rootScope) {
   };
 };
 
-angular.module('store.api.client.foodio').factory('ApiBase', apiBase);
+angular.module('store.api.client.foodio').factory('ApiBase', api);
+api.$inject = ['$rootScope'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var confirmationApi = function confirmationApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function () {
     function ConfirmationApi() {
       _classCallCheck(this, ConfirmationApi);
@@ -61,14 +58,15 @@ var confirmationApi = function confirmationApi(Restangular, ApiBase) {
   })())();
 };
 
-angular.module('store.api.client.foodio').factory('confirmationApi', confirmationApi);
+angular.module('store.api.client.foodio').factory('confirmationApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, constants) {
+var api = function api(Restangular, $q, $interval, $window, popup, constants) {
   return new ((function () {
     function LoginApi() {
       _classCallCheck(this, LoginApi);
@@ -83,15 +81,15 @@ var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, con
       key: 'loginWithFacebook',
       value: function loginWithFacebook() {
         return $q(function (resolve, reject) {
-          return popup.open(constants.baseUrl + '/sessions/auth/facebook', 600, 600).then(function (popup) {
+          return popup.open(constants.api + '/sessions/auth/facebook', 600, 600).then(function (popup) {
             var fetchInterval = $interval(function () {
-              popup.postMessage('fetch', constants.baseUrl);
+              popup.postMessage('fetch', constants.api);
             }, 1000);
 
             $window.addEventListener('message', function (e) {
               $interval.cancel(fetchInterval);
 
-              if (e.origin != constants.baseUrl) {
+              if (e.origin != constants.api) {
                 return false;
               }
 
@@ -107,7 +105,8 @@ var loginApi = function loginApi(Restangular, $q, $interval, $window, popup, con
   })())();
 };
 
-angular.module('store.api.client.foodio').factory('loginApi', loginApi);
+angular.module('store.api.client.foodio').factory('loginApi', api);
+api.$inject = ['Restangular', '$q', '$interval', '$window', 'popup', 'constants'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -118,7 +117,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var meAddressApi = function meAddressApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(MeAddressApi, _ApiBase);
 
@@ -154,7 +153,86 @@ var meAddressApi = function meAddressApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('meAddressApi', meAddressApi);
+angular.module('store.api.client.foodio').factory('meAddressApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var api = function api(Restangular, ApiBase) {
+  return new ((function (_ApiBase) {
+    _inherits(MeApi, _ApiBase);
+
+    function MeApi() {
+      _classCallCheck(this, MeApi);
+
+      _get(Object.getPrototypeOf(MeApi.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(MeApi, [{
+      key: 'fetch',
+      value: function fetch() {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').get();
+      }
+    }, {
+      key: 'update',
+      value: function update(data) {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').patch({ costumer: data });
+      }
+    }]);
+
+    return MeApi;
+  })(ApiBase))();
+};
+
+angular.module('store.api.client.foodio').factory('meApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var api = function api(Restangular, ApiBase) {
+  return new ((function (_ApiBase) {
+    _inherits(MeCartApi, _ApiBase);
+
+    function MeCartApi() {
+      _classCallCheck(this, MeCartApi);
+
+      _get(Object.getPrototypeOf(MeCartApi.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(MeCartApi, [{
+      key: 'fetch',
+      value: function fetch() {
+        var params = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').get(params);
+      }
+    }, {
+      key: 'create',
+      value: function create() {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').one('new').get();
+      }
+    }]);
+
+    return MeCartApi;
+  })(ApiBase))();
+};
+
+angular.module('store.api.client.foodio').factory('meCartApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -165,7 +243,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var meCartItemApi = function meCartItemApi(Restangular, ApiBase, $q) {
+var api = function api(Restangular, ApiBase, $q) {
   return new ((function (_ApiBase) {
     _inherits(MeCartItemApi, _ApiBase);
 
@@ -235,46 +313,8 @@ var meCartItemApi = function meCartItemApi(Restangular, ApiBase, $q) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('meCartItemApi', meCartItemApi);
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var meCartApi = function meCartApi(Restangular, ApiBase) {
-  return new ((function (_ApiBase) {
-    _inherits(MeCartApi, _ApiBase);
-
-    function MeCartApi() {
-      _classCallCheck(this, MeCartApi);
-
-      _get(Object.getPrototypeOf(MeCartApi.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(MeCartApi, [{
-      key: 'fetch',
-      value: function fetch() {
-        var params = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').get(params);
-      }
-    }, {
-      key: 'create',
-      value: function create() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').one('cart').one('new').get();
-      }
-    }]);
-
-    return MeCartApi;
-  })(ApiBase))();
-};
-
-angular.module('store.api.client.foodio').factory('meCartApi', meCartApi);
+angular.module('store.api.client.foodio').factory('meCartItemApi', api);
+api.$inject = ['Restangular', 'ApiBase', '$q'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -285,7 +325,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var meOrderApi = function meOrderApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(MeOrderApi, _ApiBase);
 
@@ -316,7 +356,8 @@ var meOrderApi = function meOrderApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('meOrderApi', meOrderApi);
+angular.module('store.api.client.foodio').factory('meOrderApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -327,44 +368,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var meApi = function meApi(Restangular, ApiBase) {
-  return new ((function (_ApiBase) {
-    _inherits(MeApi, _ApiBase);
-
-    function MeApi() {
-      _classCallCheck(this, MeApi);
-
-      _get(Object.getPrototypeOf(MeApi.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(MeApi, [{
-      key: 'fetch',
-      value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').get();
-      }
-    }, {
-      key: 'update',
-      value: function update(data) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('me').patch({ costumer: data });
-      }
-    }]);
-
-    return MeApi;
-  })(ApiBase))();
-};
-
-angular.module('store.api.client.foodio').factory('meApi', meApi);
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var menuApi = function menuApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(MenuApi, _ApiBase);
 
@@ -385,7 +389,8 @@ var menuApi = function menuApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('menuApi', menuApi);
+angular.module('store.api.client.foodio').factory('menuApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -396,7 +401,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var orderApi = function orderApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(OrderApi, _ApiBase);
 
@@ -427,14 +432,15 @@ var orderApi = function orderApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('orderApi', orderApi);
+angular.module('store.api.client.foodio').factory('orderApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var passwordApi = function passwordApi(Restangular) {
+var api = function api(Restangular) {
   return new ((function () {
     function PasswordApi() {
       _classCallCheck(this, PasswordApi);
@@ -456,7 +462,8 @@ var passwordApi = function passwordApi(Restangular) {
   })())();
 };
 
-angular.module('store.api.client.foodio').factory('passwordApi', passwordApi);
+angular.module('store.api.client.foodio').factory('passwordApi', api);
+api.$inject = ['Restangular'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -467,7 +474,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var registrationApi = function registrationApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(RegistrationApi, _ApiBase);
 
@@ -493,39 +500,8 @@ var registrationApi = function registrationApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('registrationApi', registrationApi);
-'use strict';
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var storeProductApi = function storeProductApi(Restangular, ApiBase) {
-  return new ((function (_ApiBase) {
-    _inherits(storeProductApi, _ApiBase);
-
-    function storeProductApi() {
-      _classCallCheck(this, storeProductApi);
-
-      _get(Object.getPrototypeOf(storeProductApi.prototype), 'constructor', this).apply(this, arguments);
-    }
-
-    _createClass(storeProductApi, [{
-      key: 'show',
-      value: function show(storeProduct) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('store_products', storeProduct.id).get();
-      }
-    }]);
-
-    return storeProductApi;
-  })(ApiBase))();
-};
-
-angular.module('store.api.client.foodio').factory('storeProductApi', storeProductApi);
+angular.module('store.api.client.foodio').factory('registrationApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -536,7 +512,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var storeApi = function storeApi(Restangular, ApiBase) {
+var api = function api(Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(StoreApi, _ApiBase);
 
@@ -564,14 +540,48 @@ var storeApi = function storeApi(Restangular, ApiBase) {
   })(ApiBase))();
 };
 
-angular.module('store.api.client.foodio').factory('storeApi', storeApi);
+angular.module('store.api.client.foodio').factory('storeApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
+'use strict';
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var api = function api(Restangular, ApiBase) {
+  return new ((function (_ApiBase) {
+    _inherits(storeProductApi, _ApiBase);
+
+    function storeProductApi() {
+      _classCallCheck(this, storeProductApi);
+
+      _get(Object.getPrototypeOf(storeProductApi.prototype), 'constructor', this).apply(this, arguments);
+    }
+
+    _createClass(storeProductApi, [{
+      key: 'show',
+      value: function show(storeProduct) {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('store_products', storeProduct.id).get();
+      }
+    }]);
+
+    return storeProductApi;
+  })(ApiBase))();
+};
+
+angular.module('store.api.client.foodio').factory('storeProductApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var zipcodeApi = function zipcodeApi(Restangular) {
+var api = function api(Restangular) {
   return new ((function () {
     function ZipcodeApi() {
       _classCallCheck(this, ZipcodeApi);
@@ -588,4 +598,5 @@ var zipcodeApi = function zipcodeApi(Restangular) {
   })())();
 };
 
-angular.module('store.api.client.foodio').factory('zipcodeApi', zipcodeApi);
+angular.module('store.api.client.foodio').factory('zipcodeApi', api);
+api.$inject = ['Restangular'];
