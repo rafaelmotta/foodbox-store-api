@@ -1,4 +1,4 @@
-let apiBase = ($rootScope) => {
+let api = ($rootScope) => {
   return class ApiBase {
     constructor(){
       this.company = $rootScope.company;
@@ -15,4 +15,5 @@ let apiBase = ($rootScope) => {
   };
 };
 
-angular.module('foodbox.store.api').factory('ApiBase', apiBase);
+angular.module('store.api.client.foodio').factory('ApiBase', api);
+api.$inject = ['$rootScope'];

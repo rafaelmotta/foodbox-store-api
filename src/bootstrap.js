@@ -1,9 +1,5 @@
-angular.module('foodbox.store.api', []);
+angular.module('store.api.client.foodio', ['constants.foodio']);
 
-angular.module('foodbox.store.api').constant('constants', {
-  baseUrl: "http://speedy.com.br"
-});
-
-angular.module('foodbox.store.api').config((constants, RestangularProvider) => {
-  RestangularProvider.setBaseUrl(constants.baseUrl);
+angular.module('store.api.client.foodio').config((constants, RestangularProvider) => {
+  RestangularProvider.setBaseUrl(constants.api);
 });

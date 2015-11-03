@@ -1,4 +1,4 @@
-let meOrderApi = (Restangular, ApiBase) => {
+let api = (Restangular, ApiBase) => {
   return new class MeOrderApi extends ApiBase {
 
     fetch() {
@@ -30,4 +30,5 @@ let meOrderApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('meOrderApi', meOrderApi);
+angular.module('store.api.client.foodio').factory('meOrderApi', api);
+api.$inject = ['Restangular', 'ApiBase'];

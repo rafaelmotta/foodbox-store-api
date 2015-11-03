@@ -1,4 +1,4 @@
-let passwordApi = (Restangular) => {
+let api = (Restangular) => {
   return new class PasswordApi {
 
     create(data) {
@@ -16,4 +16,5 @@ let passwordApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('passwordApi', passwordApi);
+angular.module('store.api.client.foodio').factory('passwordApi', api);
+api.$inject = ['Restangular'];

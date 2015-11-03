@@ -1,4 +1,4 @@
-let confirmationApi = (Restangular, ApiBase) => {
+let api = (Restangular, ApiBase) => {
   return new class ConfirmationApi {
     fetch(data) {
       return Restangular
@@ -15,4 +15,5 @@ let confirmationApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('confirmationApi', confirmationApi);
+angular.module('store.api.client.foodio').factory('confirmationApi', api);
+api.$inject = ['Restangular', 'ApiBase'];

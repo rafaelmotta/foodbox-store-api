@@ -1,4 +1,4 @@
-let registrationApi = (Restangular, ApiBase) => {
+let api = (Restangular, ApiBase) => {
   return new class RegistrationApi extends ApiBase {
 
     create(data) {
@@ -15,4 +15,6 @@ let registrationApi = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('registrationApi', registrationApi);
+angular.module('store.api.client.foodio').factory('registrationApi', api);
+api.$inject = ['Restangular', 'ApiBase'];
+

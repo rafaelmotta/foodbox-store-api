@@ -1,4 +1,4 @@
-let zipcodeApi = (Restangular) => {
+let api = (Restangular) => {
   return new class ZipcodeApi {
     fetch(params) {
       return Restangular
@@ -8,4 +8,5 @@ let zipcodeApi = (Restangular) => {
   }
 };
 
-angular.module('foodbox.store.api').factory('zipcodeApi', zipcodeApi);
+angular.module('store.api.client.foodio').factory('zipcodeApi', api);
+api.$inject = ['Restangular'];
