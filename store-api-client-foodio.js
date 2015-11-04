@@ -107,9 +107,9 @@ var api = function api(Restangular, $q, $interval, $window, popup, constants) {
       }
     }, {
       key: 'loginWithFacebook',
-      value: function loginWithFacebook() {
+      value: function loginWithFacebook(company) {
         return $q(function (resolve, reject) {
-          return popup.open(constants.api + '/sessions/auth/facebook', 600, 600).then(function (popup) {
+          return popup.open(constants.api + '/sessions/auth/facebook?company_id=' + company.id, 600, 600).then(function (popup) {
             var fetchInterval = $interval(function () {
               popup.postMessage('fetch', constants.api);
             }, 1000);

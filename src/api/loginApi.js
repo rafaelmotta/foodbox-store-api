@@ -6,9 +6,9 @@ let api = (Restangular, $q, $interval, $window, popup, constants) => {
         .post('sign_in', { costumer: data });
     }
 
-    loginWithFacebook() {
+    loginWithFacebook(company) {
       return $q((resolve, reject) => {
-        return popup.open(`${constants.api}/sessions/auth/facebook`, 600, 600).then((popup) => {
+        return popup.open(`${constants.api}/sessions/auth/facebook?company_id=${company.id}`, 600, 600).then((popup) => {
           let fetchInterval = $interval(() => {
             popup.postMessage('fetch', constants.api);
           }, 1000);
