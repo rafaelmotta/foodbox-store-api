@@ -21,7 +21,7 @@ let api = (Restangular, $q, $interval, $window, popup, constants) => {
             }
 
             popup.close();
-            resolve(e.data, { provider: 'Facebook' });
+            resolve({ data: e.data }, { provider: 'Facebook' });
           }, false);
         });
       });
