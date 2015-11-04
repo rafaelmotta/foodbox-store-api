@@ -10,7 +10,7 @@ let api = (Restangular) => {
     update(data) {
       return Restangular
         .one('sessions')
-        .one('confirmation')
+        .one('password')
         .patch({ costumer: data });
     }
   }
