@@ -482,7 +482,7 @@ var api = function api(Restangular) {
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('sessions').one('confirmation').patch({ costumer: data });
+        return Restangular.one('sessions').one('password').patch({ costumer: data });
       }
     }]);
 
