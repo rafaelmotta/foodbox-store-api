@@ -3,6 +3,7 @@ let api = ($rootScope) => {
     constructor(){
       this.company = $rootScope.company;
       this.store = $rootScope.currentStore;
+      this.costumer = $rootScope.currentCostumer;
 
       $rootScope.$watch('currentStore', (store) => {
         if(store) this.store = store;
@@ -10,6 +11,10 @@ let api = ($rootScope) => {
 
       $rootScope.$watch('company', (company) => {
         if(company) this.company = company;
+      });
+
+      $rootScope.$watch('currentCostumer', (costumer) => {
+        if(costumer) this.costumer = costumer;
       });
     }
   };

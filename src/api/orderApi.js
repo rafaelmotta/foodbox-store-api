@@ -1,10 +1,11 @@
 let api = (Restangular, ApiBase) => {
   return new class OrderApi extends ApiBase {
+
     fetch() {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('orders')
         .get();
     }
@@ -13,7 +14,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('orders', order.public_number)
         .get();
     }
@@ -22,7 +23,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .post('orders', { order: order });
     }
   }

@@ -1,10 +1,10 @@
 let api = (Restangular, ApiBase) => {
-  return new class MeAddressApi extends ApiBase {
+  return new class AddressApi extends ApiBase {
     fetch() {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('addresses')
         .get();
     }
@@ -13,7 +13,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .post('addresses', { address: address });
     }
 
@@ -21,7 +21,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('addresses', address.id)
         .patch({ address: address });
     }
@@ -30,12 +30,12 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('addresses', address.id)
         .remove();
     }
   }
 };
 
-angular.module('store.api.client.foodio').factory('meAddressApi', api);
+angular.module('store.api.client.foodio').factory('addressApi', api);
 api.$inject = ['Restangular', 'ApiBase'];

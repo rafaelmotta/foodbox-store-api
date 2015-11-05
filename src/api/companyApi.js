@@ -1,5 +1,7 @@
 let api = (Restangular) => {
+
   return new class CompanyApi {
+
     fetchBySubdomain(company) {
       return Restangular
         .one('companies', company.subdomain)

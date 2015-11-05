@@ -1,11 +1,11 @@
 let api = (Restangular, ApiBase) => {
-  return new class MeCartApi extends ApiBase {
+  return new class CartApi extends ApiBase {
 
     fetch(params = {}) {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('cart')
         .get(params);
     }
@@ -14,7 +14,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('me')
+        .one('costumer', this.costumer.id)
         .one('cart')
         .one('new')
         .get();
@@ -22,5 +22,5 @@ let api = (Restangular, ApiBase) => {
   }
 };
 
-angular.module('store.api.client.foodio').factory('meCartApi', api);
+angular.module('store.api.client.foodio').factory('cartApi', api);
 api.$inject = ['Restangular', 'ApiBase'];
