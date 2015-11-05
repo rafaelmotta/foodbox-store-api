@@ -6,7 +6,6 @@ let api = (Restangular, ApiBase, $q) => {
         return Restangular
           .one('companies', this.company.id)
           .one('stores', this.store.id)
-          .one('costumer', this.costumer.id)
           .one('cart')
           .post(`cart_items?cart_id=${params.cart_id}`, { cart_item: serializedCartItem });
       });
@@ -18,7 +17,6 @@ let api = (Restangular, ApiBase, $q) => {
         return Restangular
           .one('companies', this.company.id)
           .one('stores', this.store.id)
-          .one('costumer', this.costumer.id).one('costumer', this.costumer.id)
           .one('cart')
           .one('cart_items', cartItem.id)
           .patch(angular.extend({ cart_item: serializedCartItem }, params));
@@ -29,7 +27,6 @@ let api = (Restangular, ApiBase, $q) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
         .one('cart')
         .one('cart_items', cartItem.id)
         .remove(params);
