@@ -31,22 +31,22 @@ var api = function api(Restangular, ApiBase) {
     _createClass(AddressApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).one('addresses').get();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses').get();
       }
     }, {
       key: 'create',
       value: function create(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).post('addresses', { address: address });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).post('addresses', { address: address });
       }
     }, {
       key: 'update',
       value: function update(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).one('addresses', address.id).patch({ address: address });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses', address.id).patch({ address: address });
       }
     }, {
       key: 'remove',
       value: function remove(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).one('addresses', address.id).remove();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses', address.id).remove();
       }
     }]);
 
@@ -111,12 +111,12 @@ var api = function api(Restangular, ApiBase) {
       value: function fetch() {
         var params = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('cart').get(params);
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').get(params);
       }
     }, {
       key: 'create',
       value: function create() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('cart').one('new').get();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').one('new').get();
       }
     }]);
 
@@ -154,7 +154,7 @@ var api = function api(Restangular, ApiBase, $q) {
         var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
-          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('cart').post('cart_items?cart_id=' + params.cart_id, { cart_item: serializedCartItem });
+          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('carts').post('cart_items?cart_id=' + params.cart_id, { cart_item: serializedCartItem });
         });
       }
     }, {
@@ -165,7 +165,7 @@ var api = function api(Restangular, ApiBase, $q) {
         var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
-          return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('cart').one('cart_items', cartItem.id).patch(angular.extend({ cart_item: serializedCartItem }, params));
+          return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('carts').one('cart_items', cartItem.id).patch(angular.extend({ cart_item: serializedCartItem }, params));
         });
       }
     }, {
@@ -173,7 +173,7 @@ var api = function api(Restangular, ApiBase, $q) {
       value: function destroy(cartItem) {
         var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('cart').one('cart_items', cartItem.id).remove(params);
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').one('cart_items', cartItem.id).remove(params);
       }
     }, {
       key: '_serialize',
@@ -287,12 +287,12 @@ var api = function api(Restangular, ApiBase) {
     _createClass(CostumerApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).get();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).get();
       }
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).patch({ costumer: data });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).patch({ costumer: data });
       }
     }]);
 
@@ -405,17 +405,17 @@ var api = function api(Restangular, ApiBase) {
     _createClass(OrderApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).one('orders').get();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('orders').get();
       }
     }, {
       key: 'show',
       value: function show(order) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).one('orders', order.public_number).get();
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('orders', order.public_number).get();
       }
     }, {
       key: 'create',
       value: function create(order) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumer', this.costumer.id).post('orders', { order: order });
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).post('orders', { order: order });
       }
     }]);
 

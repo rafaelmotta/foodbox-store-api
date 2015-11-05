@@ -4,7 +4,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .one('addresses')
         .get();
     }
@@ -13,7 +13,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .post('addresses', { address: address });
     }
 
@@ -21,7 +21,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .one('addresses', address.id)
         .patch({ address: address });
     }
@@ -30,7 +30,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .one('addresses', address.id)
         .remove();
     }

@@ -4,7 +4,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .get();
     }
 
@@ -12,7 +12,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('costumer', this.costumer.id)
+        .one('costumers', this.costumer.id)
         .patch({ costumer: data});
     }
   }
