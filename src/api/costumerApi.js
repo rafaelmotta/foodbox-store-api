@@ -3,7 +3,6 @@ let api = (Restangular, ApiBase) => {
     fetch() {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .get();
     }
@@ -11,7 +10,6 @@ let api = (Restangular, ApiBase) => {
     update(data) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .patch({ costumer: data});
     }

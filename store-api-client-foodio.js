@@ -287,12 +287,12 @@ var api = function api(Restangular, ApiBase) {
     _createClass(CostumerApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).get();
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).get();
       }
     }, {
       key: 'update',
       value: function update(data) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).patch({ costumer: data });
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).patch({ costumer: data });
       }
     }]);
 
