@@ -30,23 +30,23 @@ var api = function api(Restangular, ApiBase) {
 
     _createClass(AddressApi, [{
       key: 'fetch',
-      value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses').get();
+      value: function fetch(params) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('addresses').get(params);
       }
     }, {
       key: 'create',
       value: function create(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).post('addresses', { address: address });
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).post('addresses', { address: address });
       }
     }, {
       key: 'update',
       value: function update(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses', address.id).patch({ address: address });
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('addresses', address.id).patch({ address: address });
       }
     }, {
       key: 'remove',
       value: function remove(address) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('addresses', address.id).remove();
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('addresses', address.id).remove();
       }
     }]);
 
@@ -405,17 +405,17 @@ var api = function api(Restangular, ApiBase) {
     _createClass(OrderApi, [{
       key: 'fetch',
       value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('orders').get();
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders').get();
       }
     }, {
       key: 'show',
       value: function show(order) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).one('orders', order.public_number).get();
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders', order.public_number).get();
       }
     }, {
       key: 'create',
       value: function create(order) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('costumers', this.costumer.id).post('orders', { order: order });
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).post('orders', { order: order });
       }
     }]);
 

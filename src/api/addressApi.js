@@ -1,18 +1,16 @@
 let api = (Restangular, ApiBase) => {
   return new class AddressApi extends ApiBase {
-    fetch() {
+    fetch(params) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .one('addresses')
-        .get();
+        .get(params);
     }
 
     create(address) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .post('addresses', { address: address });
     }
@@ -20,7 +18,6 @@ let api = (Restangular, ApiBase) => {
     update(address) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .one('addresses', address.id)
         .patch({ address: address });
@@ -29,7 +26,6 @@ let api = (Restangular, ApiBase) => {
     remove(address) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .one('addresses', address.id)
         .remove();

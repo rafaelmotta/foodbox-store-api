@@ -4,7 +4,6 @@ let api = (Restangular, ApiBase) => {
     fetch() {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .one('orders')
         .get();
@@ -13,7 +12,6 @@ let api = (Restangular, ApiBase) => {
     show(order) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .one('orders', order.public_number)
         .get();
@@ -22,7 +20,6 @@ let api = (Restangular, ApiBase) => {
     create(order) {
       return Restangular
         .one('companies', this.company.id)
-        .one('stores', this.store.id)
         .one('costumers', this.costumer.id)
         .post('orders', { order: order });
     }
