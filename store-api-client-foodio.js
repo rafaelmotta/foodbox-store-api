@@ -404,8 +404,8 @@ var api = function api(Restangular, ApiBase) {
 
     _createClass(OrderApi, [{
       key: 'fetch',
-      value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders').get();
+      value: function fetch(params) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders').get(params);
       }
     }, {
       key: 'show',
