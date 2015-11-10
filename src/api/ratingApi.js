@@ -10,24 +10,26 @@ let api = (Restangular, ApiBase, $q) => {
     }
 
     create(rating) {
-      this._beforeCreate(rating, (ratingSerialized) => {
+      return this._serializeBeforeCreate(rating).then((serializedRating) => {
         return Restangular
           .one('companies', this.company.id)
           .one('costumers', this.costumer.id)
           .one('orders', rating.order.id)
-          .post('ratings', { rating: ratingSerialized });
+          .post('ratings', { rating: serializedRating });
       });
     }
 
-    _beforeCreate(data) {
+    _serializeBeforeCreate(data) {
       return $q((resolve, reject) => {
-        resolve({
+        let rating = {
           delivery: data.delivery,
           score: data.score,
           quality: data.quality,
           good_comment: data.goodComment,
           bad_comment: data.bad_comment
-        });
+        };
+
+        return resolve(rating);
       });
     }
   }
