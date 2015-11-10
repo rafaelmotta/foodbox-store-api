@@ -494,11 +494,11 @@ var api = function api(Restangular, ApiBase, $q) {
       value: function _serializeBeforeCreate(order) {
         return $q(function (resolve, reject) {
           var rating = {
-            delivery: order.delivery,
-            score: order.score,
-            quality: order.quality,
-            good_comment: order.goodComment,
-            bad_comment: order.bad_comment
+            delivery: order.rating.delivery,
+            score: order.rating.score,
+            quality: order.rating.quality,
+            good_comment: order.rating.goodComment,
+            bad_comment: order.rating.bad_comment
           };
 
           return resolve(rating);

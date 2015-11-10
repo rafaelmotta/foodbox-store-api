@@ -22,11 +22,11 @@ let api = (Restangular, ApiBase, $q) => {
     _serializeBeforeCreate(order) {
       return $q((resolve, reject) => {
         let rating = {
-          delivery: order.delivery,
-          score: order.score,
-          quality: order.quality,
-          good_comment: order.goodComment,
-          bad_comment: order.bad_comment
+          delivery: order.rating.delivery,
+          score: order.rating.score,
+          quality: order.rating.quality,
+          good_comment: order.rating.goodComment,
+          bad_comment: order.rating.bad_comment
         };
 
         return resolve(rating);
