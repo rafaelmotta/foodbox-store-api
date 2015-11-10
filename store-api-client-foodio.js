@@ -467,38 +467,38 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 
 var api = function api(Restangular, ApiBase, $q) {
   return new ((function (_ApiBase) {
-    _inherits(CostumerApi, _ApiBase);
+    _inherits(RatingApi, _ApiBase);
 
-    function CostumerApi() {
-      _classCallCheck(this, CostumerApi);
+    function RatingApi() {
+      _classCallCheck(this, RatingApi);
 
-      _get(Object.getPrototypeOf(CostumerApi.prototype), 'constructor', this).apply(this, arguments);
+      _get(Object.getPrototypeOf(RatingApi.prototype), 'constructor', this).apply(this, arguments);
     }
 
-    _createClass(CostumerApi, [{
+    _createClass(RatingApi, [{
       key: 'fetch',
       value: function fetch(order) {
         return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders', order.id).one('ratings', order.rating.id).get();
       }
     }, {
       key: 'create',
-      value: function create(rating) {
+      value: function create(order) {
         var _this = this;
 
-        return this._serializeBeforeCreate(rating).then(function (serializedRating) {
-          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', rating.order.publicNumber).post('ratings', { rating: serializedRating });
+        return this._serializeBeforeCreate(order).then(function (rating) {
+          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', order.public_number).post('ratings', { rating: rating });
         });
       }
     }, {
       key: '_serializeBeforeCreate',
-      value: function _serializeBeforeCreate(data) {
+      value: function _serializeBeforeCreate(order) {
         return $q(function (resolve, reject) {
           var rating = {
-            delivery: data.delivery,
-            score: data.score,
-            quality: data.quality,
-            good_comment: data.goodComment,
-            bad_comment: data.bad_comment
+            delivery: order.delivery,
+            score: order.score,
+            quality: order.quality,
+            good_comment: order.goodComment,
+            bad_comment: order.bad_comment
           };
 
           return resolve(rating);
@@ -506,7 +506,7 @@ var api = function api(Restangular, ApiBase, $q) {
       }
     }]);
 
-    return CostumerApi;
+    return RatingApi;
   })(ApiBase))();
 };
 

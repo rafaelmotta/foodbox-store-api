@@ -1,5 +1,5 @@
 let api = (Restangular, ApiBase, $q) => {
-  return new class CostumerApi extends ApiBase {
+  return new class RatingApi extends ApiBase {
     fetch(order) {
       return Restangular
         .one('companies', this.company.id)
