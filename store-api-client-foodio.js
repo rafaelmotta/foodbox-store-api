@@ -485,21 +485,23 @@ var api = function api(Restangular, ApiBase, $q) {
       value: function create(rating) {
         var _this = this;
 
-        this._beforeCreate(rating, function (ratingSerialized) {
-          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', rating.order.id).post('ratings', { rating: ratingSerialized });
+        return this._serializeBeforeCreate(rating).then(function (serializedRating) {
+          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', rating.order.id).post('ratings', { rating: serializedRating });
         });
       }
     }, {
-      key: '_beforeCreate',
-      value: function _beforeCreate(data) {
+      key: '_serializeBeforeCreate',
+      value: function _serializeBeforeCreate(data) {
         return $q(function (resolve, reject) {
-          resolve({
+          var rating = {
             delivery: data.delivery,
             score: data.score,
             quality: data.quality,
             good_comment: data.goodComment,
             bad_comment: data.bad_comment
-          });
+          };
+
+          return resolve(rating);
         });
       }
     }]);
