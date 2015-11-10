@@ -486,7 +486,7 @@ var api = function api(Restangular, ApiBase, $q) {
         var _this = this;
 
         return this._serializeBeforeCreate(rating).then(function (serializedRating) {
-          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', rating.order.public_number).post('ratings', { rating: serializedRating });
+          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).one('orders', rating.order.publicNumber).post('ratings', { rating: serializedRating });
         });
       }
     }, {

@@ -14,7 +14,7 @@ let api = (Restangular, ApiBase, $q) => {
         return Restangular
           .one('companies', this.company.id)
           .one('costumers', this.costumer.id)
-          .one('orders', rating.order.public_number)
+          .one('orders', rating.order.publicNumber)
           .post('ratings', { rating: serializedRating });
       });
     }
