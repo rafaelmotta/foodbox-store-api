@@ -12,4 +12,4 @@ let api = (Restangular, ApiBase) => {
 };
 
 api.$inject = ['Restangular', 'ApiBase'];
-angular.module('admin.api.client.foodio').factory('chatMessageApi', api);
+angular.module('store.api.client.foodio').factory('chatMessageApi', api);
