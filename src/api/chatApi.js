@@ -5,7 +5,7 @@ let api = (Restangular, ApiBase) => {
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)
-        .one('chat', chat.id)
+        .one('chats', chat.id)
         .get();
       }
   }
