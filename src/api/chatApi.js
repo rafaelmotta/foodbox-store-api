@@ -1,12 +1,11 @@
 let api = (Restangular, ApiBase) => {
   return new class ChatApi extends ApiBase {
 
-    show(resource) {
+    show(chat) {
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)
-        .one(resource.name, resource.id)
-        .one('chat')
+        .one('chat', chat.id)
         .get();
       }
   }
