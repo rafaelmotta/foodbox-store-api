@@ -1,4 +1,4 @@
-let api = (Restangular, ApiBase) => {
+let api = ($q, Restangular, ApiBase) => {
   return new class OrderApi extends ApiBase {
 
     fetch(params) {
@@ -18,7 +18,7 @@ let api = (Restangular, ApiBase) => {
     }
 
     create(order) {
-      this._serializeBeforeCreate(order, (serializedOrder) => {
+      return this._serializeBeforeCreate(order, (serializedOrder) => {
         return Restangular
           .one('companies', this.company.id)
           .one('costumers', this.costumer.id)
@@ -45,7 +45,6 @@ let api = (Restangular, ApiBase) => {
             to: order.scheduling.day.date + ' ' + order.scheduling.time.closing
           };
         }
-
         return resolve(data);
       });
     }
@@ -53,4 +52,4 @@ let api = (Restangular, ApiBase) => {
 };
 
 angular.module('store.api.client.foodio').factory('orderApi', api);
-api.$inject = ['Restangular', 'ApiBase'];
+api.$inject = ['$q', 'Restangular', 'ApiBase'];

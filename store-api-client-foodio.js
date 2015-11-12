@@ -458,7 +458,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var api = function api(Restangular, ApiBase) {
+var api = function api($q, Restangular, ApiBase) {
   return new ((function (_ApiBase) {
     _inherits(OrderApi, _ApiBase);
 
@@ -483,7 +483,7 @@ var api = function api(Restangular, ApiBase) {
       value: function create(order) {
         var _this = this;
 
-        this._serializeBeforeCreate(order, function (serializedOrder) {
+        return this._serializeBeforeCreate(order, function (serializedOrder) {
           return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).post('orders', { order: order });
         });
       }
@@ -508,7 +508,6 @@ var api = function api(Restangular, ApiBase) {
               to: order.scheduling.day.date + ' ' + order.scheduling.time.closing
             };
           }
-
           return resolve(data);
         });
       }
@@ -519,7 +518,7 @@ var api = function api(Restangular, ApiBase) {
 };
 
 angular.module('store.api.client.foodio').factory('orderApi', api);
-api.$inject = ['Restangular', 'ApiBase'];
+api.$inject = ['$q', 'Restangular', 'ApiBase'];
 'use strict';
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
