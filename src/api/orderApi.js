@@ -29,7 +29,7 @@ let api = ($q, Restangular, ApiBase) => {
     _serializeBeforeCreate(order) {
       return $q((resolve) => {
         let data = {
-          store_id: store.id,
+          store_id: order.store.id,
           cart_id: order.cart.id,
           note: order.note || null,
           change: order.change || null,
