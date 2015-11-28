@@ -18,7 +18,7 @@ let api = ($q, Restangular, ApiBase) => {
     }
 
     create(order) {
-      return this._serializeBeforeCreate(order, (serializedOrder) => {
+      return this._serializeBeforeCreate(order).then((serializedOrder) => {
         return Restangular
           .one('companies', this.company.id)
           .one('costumers', this.costumer.id)
