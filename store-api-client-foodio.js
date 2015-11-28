@@ -484,7 +484,7 @@ var api = function api($q, Restangular, ApiBase) {
         var _this = this;
 
         return this._serializeBeforeCreate(order, function (serializedOrder) {
-          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).post('orders', { order: order });
+          return Restangular.one('companies', _this.company.id).one('costumers', _this.costumer.id).post('orders', { order: serializedOrder });
         });
       }
     }, {

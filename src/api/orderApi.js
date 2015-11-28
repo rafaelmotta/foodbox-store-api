@@ -22,7 +22,7 @@ let api = ($q, Restangular, ApiBase) => {
         return Restangular
           .one('companies', this.company.id)
           .one('costumers', this.costumer.id)
-          .post('orders', { order: order });
+          .post('orders', { order: serializedOrder });
       });
     }
 
