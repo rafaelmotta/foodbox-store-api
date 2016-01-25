@@ -541,9 +541,9 @@ var service = function service(Restangular, ApiBase) {
     }
 
     _createClass(PageApi, [{
-      key: 'fetch',
-      value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('pages').get();
+      key: 'show',
+      value: function show(page) {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('pages', page.id).get();
       }
     }]);
 

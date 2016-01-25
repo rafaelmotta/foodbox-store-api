@@ -2,11 +2,11 @@ let service = (Restangular, ApiBase) => {
 
   return new class PageApi extends ApiBase {
 
-    fetch() {
+    show(page) {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
-        .one('pages')
+        .one('pages', page.id)
         .get();
     }
   }
