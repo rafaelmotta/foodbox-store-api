@@ -543,7 +543,7 @@ var service = function service(Restangular, ApiBase) {
     _createClass(PageApi, [{
       key: 'show',
       value: function show(page) {
-        return Restangular.one('companies', this.company.id).one('pages', page.alias).get();
+        return Restangular.one('companies', this.company.id).one('pages', page.id).get();
       }
     }]);
 

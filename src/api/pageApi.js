@@ -5,7 +5,7 @@ let service = (Restangular, ApiBase) => {
     show(page) {
       return Restangular
         .one('companies', this.company.id)
-        .one('pages', page.alias)
+        .one('pages', page.id)
         .get();
     }
   }
