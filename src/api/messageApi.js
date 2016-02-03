@@ -5,6 +5,7 @@ let api = (Restangular, ApiBase) => {
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('messages', data.page)
+        .get();
     }
   }
 };

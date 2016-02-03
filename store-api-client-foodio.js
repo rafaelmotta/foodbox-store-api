@@ -471,7 +471,7 @@ var api = function api(Restangular, ApiBase) {
     _createClass(StoreApi, [{
       key: 'show',
       value: function show(data) {
-        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('messages', data.page);
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('messages', data.page).get();
       }
     }]);
 
