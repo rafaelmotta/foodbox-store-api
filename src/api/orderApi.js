@@ -38,12 +38,14 @@ let api = ($q, Restangular, ApiBase) => {
           order_type_id: order.order_type.id
         };
 
-        if (order.scheduling.day && order.scheduling.time) {
-          data.scheduling_for = {
-            wday: order.scheduling.day.wday,
-            from: order.scheduling.day.date + ' ' + order.scheduling.time.opening,
-            to: order.scheduling.day.date + ' ' + order.scheduling.time.closing
-          };
+        if (order.scheduling) {
+          if (order.scheduling.day && order.scheduling.time) {
+            data.scheduling_for = {
+              wday: order.scheduling.day.wday,
+              from: order.scheduling.day.date + ' ' + order.scheduling.time.opening,
+              to: order.scheduling.day.date + ' ' + order.scheduling.time.closing
+            };
+          }
         }
         return resolve(data);
       });
