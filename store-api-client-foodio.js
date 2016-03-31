@@ -230,8 +230,8 @@ var api = function api(Restangular, ApiBase) {
 
     _createClass(ChatApi, [{
       key: 'show',
-      value: function show(chat) {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('chats', chat.id).get();
+      value: function show(chat, params) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('chats', chat.id).get(params);
       }
     }]);
 
