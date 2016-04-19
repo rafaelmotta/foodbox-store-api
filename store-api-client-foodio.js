@@ -530,7 +530,7 @@ var api = function api($q, Restangular, ApiBase) {
             note: order.note || null,
             change: order.change || null,
             payment_method_id: order.payment_method.id,
-            address_id: order.address.id,
+            address_id: order.address ? order.address.id : null,
             order_type_id: order.order_type.id
           };
 
