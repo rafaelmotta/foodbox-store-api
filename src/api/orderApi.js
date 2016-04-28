@@ -40,7 +40,7 @@ let api = ($q, Restangular, ApiBase) => {
 
         // Cupom de desconto
         if(order.coupon && order.coupon.code) {
-          data.coupon_attributes = {
+          data.order_coupon_attributes = {
             code: order.coupon.code
           };
         }
