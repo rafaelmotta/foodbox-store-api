@@ -38,6 +38,13 @@ let api = ($q, Restangular, ApiBase) => {
           order_type_id: order.order_type.id
         };
 
+        // Cupom de desconto
+        if(order.coupon && order.coupon.code) {
+          data.coupon_attributes = {
+            code: order.coupon.code
+          };
+        }
+
         if (order.scheduling) {
           if (order.scheduling.day && order.scheduling.time) {
             data.scheduling_for = {
