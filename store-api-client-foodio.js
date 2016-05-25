@@ -475,6 +475,11 @@ var api = function api(Restangular, ApiBase) {
       value: function fetch() {
         return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('menu').get();
       }
+    }, {
+      key: 'show',
+      value: function show(product) {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('menu', product.id).get();
+      }
     }]);
 
     return MenuApi;

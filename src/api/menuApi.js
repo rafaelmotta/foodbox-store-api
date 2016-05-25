@@ -7,6 +7,14 @@ let api = (Restangular, ApiBase) => {
         .one('menu')
         .get();
     }
+
+    show(product) {
+      return Restangular
+        .one('companies', this.company.id)
+        .one('stores', this.store.id)
+        .one('menu', product.id)
+        .get();
+    }
   }
 };
 
