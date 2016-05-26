@@ -33,24 +33,30 @@ let api = (Restangular, ApiBase, $q) => {
     }
 
     _serialize(cartItem) {
-      return $q((resolve, reject) => {
-        let data = {};
+      return new Promise((resolve, reject) => {
+        let toPut = [];
 
-        angular.forEach(cartItem, (value, key) => {
-          if(key === 'id' || key === 'amount' || key === 'note') {
-            data[key] = value;
+        for(let i in cartItem.cart_item_addons) {
+          let a = cartItem.cart_item_addons[i];
+
+          if(a.id && a.price) {
+            toPut.push({ product_addon_id: a.id });
+          } else {
+            for(let j in a) {
+              let addon = a[j];
+              if(addon.selected) {
+                toPut.push({ product_addon_id: addon.id });
+              }
+            }
           }
-        });
+        }
 
-        data.store_product_id = cartItem.product.id;
-        data.customization_fields = JSON.stringify(cartItem.customization_fields);
-
-        data.cart_item_addons_to_put_attributes = cartItem.addons.map((addon) => {
-          return {
-            store_addon_id: addon.id,
-            product_addon_id: addon.product_addon_id
-          };
-        });
+        let data = {
+          amount: cartItem.amount,
+          note: cartItem.note,
+          product_id: cartItem.product.id,
+          cart_item_addons_to_put_attributes: toPut
+        };
 
         resolve(data);
       });
