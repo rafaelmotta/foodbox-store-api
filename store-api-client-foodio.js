@@ -197,6 +197,7 @@ var api = function api(Restangular, ApiBase, $q) {
           }
 
           var data = {
+            bonificable: cartItem.bonificable,
             amount: cartItem.amount,
             note: cartItem.note,
             product_id: cartItem.product.id,

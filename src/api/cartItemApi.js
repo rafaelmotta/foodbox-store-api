@@ -52,6 +52,7 @@ let api = (Restangular, ApiBase, $q) => {
         }
 
         let data = {
+          bonificable: cartItem.bonificable,
           amount: cartItem.amount,
           note: cartItem.note,
           product_id: cartItem.product.id,
