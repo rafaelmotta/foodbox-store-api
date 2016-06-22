@@ -161,6 +161,8 @@ var api = function api(Restangular, ApiBase, $q) {
         var _this2 = this;
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
+          var params = { token: cart.token };
+
           return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('carts').one('cart_items', cartItem.id).patch(angular.extend({ cart_item: serializedCartItem }, params));
         });
       }

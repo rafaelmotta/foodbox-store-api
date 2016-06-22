@@ -14,6 +14,8 @@ let api = (Restangular, ApiBase, $q) => {
 
     update(cart, cartItem) {
       return this._serialize(cartItem).then( (serializedCartItem) => {
+        let params = { token: cart.token };
+
         return Restangular
           .one('companies', this.company.id)
           .one('stores', this.store.id)
