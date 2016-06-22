@@ -154,7 +154,7 @@ var api = function api(Restangular, ApiBase, $q) {
         var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
-          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('carts').post('cart_items?cart_id=' + params.cart_id, { cart_item: serializedCartItem });
+          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('carts').post('cart_items?token=' + params.token, { cart_item: serializedCartItem });
         });
       }
     }, {

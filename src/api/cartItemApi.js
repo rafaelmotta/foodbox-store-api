@@ -7,7 +7,7 @@ let api = (Restangular, ApiBase, $q) => {
           .one('companies', this.company.id)
           .one('stores', this.store.id)
           .one('carts')
-          .post(`cart_items?cart_id=${params.cart_id}`, { cart_item: serializedCartItem });
+          .post(`cart_items?token=${params.token}`, { cart_item: serializedCartItem });
       });
     }
 
