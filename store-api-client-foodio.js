@@ -130,7 +130,7 @@ api.$inject = ['Restangular', 'ApiBase'];
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x4, _x5, _x6) { var _again = true; _function: while (_again) { var object = _x4, property = _x5, receiver = _x6; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x4 = parent; _x5 = property; _x6 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -148,21 +148,17 @@ var api = function api(Restangular, ApiBase, $q) {
 
     _createClass(CartItemApi, [{
       key: 'create',
-      value: function create(cartItem) {
+      value: function create(cart, cartItem) {
         var _this = this;
 
-        var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
         return this._serialize(cartItem).then(function (serializedCartItem) {
-          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('carts').post('cart_items?token=' + params.token, { cart_item: serializedCartItem });
+          return Restangular.one('companies', _this.company.id).one('stores', _this.store.id).one('carts').post('cart_items?token=' + cart.token, { cart_item: serializedCartItem });
         });
       }
     }, {
       key: 'update',
-      value: function update(cartItem) {
+      value: function update(cart, cartItem) {
         var _this2 = this;
-
-        var params = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
         return this._serialize(cartItem).then(function (serializedCartItem) {
           return Restangular.one('companies', _this2.company.id).one('stores', _this2.store.id).one('carts').one('cart_items', cartItem.id).patch(angular.extend({ cart_item: serializedCartItem }, params));
