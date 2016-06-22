@@ -9,7 +9,7 @@ let api = (Restangular, ApiBase) => {
         .get(params);
     }
 
-    create() {
+    new() {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)

@@ -114,8 +114,8 @@ var api = function api(Restangular, ApiBase) {
         return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').get(params);
       }
     }, {
-      key: 'create',
-      value: function create() {
+      key: 'new',
+      value: function _new() {
         return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').one('new').get();
       }
     }]);
