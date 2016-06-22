@@ -23,13 +23,13 @@ let api = (Restangular, ApiBase, $q) => {
       });
     }
 
-    destroy(cartItem, params = {}) {
+    destroy(cart, cartItem) {
       return Restangular
         .one('companies', this.company.id)
         .one('stores', this.store.id)
         .one('carts')
         .one('cart_items', cartItem.id)
-        .remove(params);
+        .remove({ token: cart.token });
     }
 
     _serialize(cartItem) {
