@@ -25,6 +25,7 @@ let api = (Restangular, ApiBase, $q) => {
           delivery: order.rating.delivery,
           score: order.rating.score,
           quality: order.rating.quality,
+          correct: order.rating.correct,
           good_comment: order.rating.goodComment,
           bad_comment: order.rating.badComment
         };
