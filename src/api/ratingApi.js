@@ -1,12 +1,13 @@
 let api = (Restangular, ApiBase, $q) => {
   return new class RatingApi extends ApiBase {
-    fetch(order) {
+
+    update(order) {
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)
-        .one('orders', order.id)
+        .one('orders', order.public_number)
         .one('ratings', order.rating.id)
-        .get();
+        .patch({ rating: order.rating });
     }
 
     create(order) {

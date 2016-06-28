@@ -722,9 +722,9 @@ var api = function api(Restangular, ApiBase, $q) {
     }
 
     _createClass(RatingApi, [{
-      key: 'fetch',
-      value: function fetch(order) {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders', order.id).one('ratings', order.rating.id).get();
+      key: 'update',
+      value: function update(order) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('orders', order.public_number).one('ratings', order.rating.id).patch({ rating: order.rating });
       }
     }, {
       key: 'create',
