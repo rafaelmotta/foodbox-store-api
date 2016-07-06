@@ -41,7 +41,7 @@ let api = (Restangular, ApiBase, $q) => {
         for(let i in cartItem.cart_item_addons) {
           let a = cartItem.cart_item_addons[i];
 
-          if(a.id && a.price) {
+          if(a.id && a.price !== null) {
             toPut.push({ product_addon_id: a.id });
           } else {
             for(let j in a) {
