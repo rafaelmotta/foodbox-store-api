@@ -172,6 +172,11 @@ var api = function api(Restangular, ApiBase, $q) {
         return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').one('cart_items', cartItem.id).remove({ token: cart.token });
       }
     }, {
+      key: 'clubable',
+      value: function clubable(cart, cartItem) {
+        return Restangular.one('companies', this.company.id).one('stores', this.store.id).one('carts').one('cart_items', cartItem.id).post('clubable?token=' + cart.token);
+      }
+    }, {
       key: '_serialize',
       value: function _serialize(cartItem) {
         return new Promise(function (resolve, reject) {

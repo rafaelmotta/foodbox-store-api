@@ -34,6 +34,15 @@ let api = (Restangular, ApiBase, $q) => {
         .remove({ token: cart.token });
     }
 
+    clubable(cart, cartItem) {
+      return Restangular
+        .one('companies', this.company.id)
+        .one('stores', this.store.id)
+        .one('carts')
+        .one('cart_items', cartItem.id)
+        .post(`clubable?token=${cart.token}`);
+    }
+
     _serialize(cartItem) {
       return new Promise((resolve, reject) => {
         let toPut = [];
