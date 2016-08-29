@@ -193,7 +193,6 @@ var api = function api(Restangular, ApiBase, $q) {
           }
 
           var data = {
-            clubable: cartItem.clubable,
             bonificable: cartItem.bonificable,
             amount: cartItem.amount,
             note: cartItem.note,
