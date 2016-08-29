@@ -304,8 +304,8 @@ var api = function api(Restangular, ApiBase) {
 
     _createClass(clubActionApi, [{
       key: 'fetch',
-      value: function fetch() {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('club_actions').get();
+      value: function fetch(params) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('club_actions').get(params);
       }
     }]);
 
