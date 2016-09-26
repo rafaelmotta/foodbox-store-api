@@ -55,8 +55,11 @@ let api = (Restangular, ApiBase, $q) => {
           } else {
             for(let j in a) {
               let addon = a[j];
-              if(addon.selected) {
-                toPut.push({ product_addon_id: addon.id });
+              if (addon.amount > 0) {
+                toPut.push({
+                  product_addon_id: addon.id,
+                  amount: addon.amount
+                });
               }
             }
           }

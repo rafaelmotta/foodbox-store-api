@@ -190,8 +190,11 @@ var api = function api(Restangular, ApiBase, $q) {
             } else {
               for (var j in a) {
                 var addon = a[j];
-                if (addon.selected) {
-                  toPut.push({ product_addon_id: addon.id });
+                if (addon.amount > 0) {
+                  toPut.push({
+                    product_addon_id: addon.id,
+                    amount: addon.amount
+                  });
                 }
               }
             }
