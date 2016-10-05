@@ -8,11 +8,19 @@ let api = (Restangular, ApiBase) => {
         .get(params);
     }
 
-    create(credit_card) {
+    create(card) {
+      if(card.number && card.number.length > 12) {
+        card.last_four_digits = card.number.slice(-4);
+      }
+
+      card.number = null;
+      card.expiry = null;
+      card.cvc = null;
+
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)
-        .post('credit_cards', { credit_card: credit_card });
+        .post('credit_cards', { credit_card: card });
     }
 
     update(credit_card) {

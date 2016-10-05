@@ -507,8 +507,16 @@ var api = function api(Restangular, ApiBase) {
       }
     }, {
       key: 'create',
-      value: function create(credit_card) {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).post('credit_cards', { credit_card: credit_card });
+      value: function create(card) {
+        if (card.number && card.number.length > 12) {
+          card.last_four_digits = card.number.slice(-4);
+        }
+
+        card.number = null;
+        card.expiry = null;
+        card.cvc = null;
+
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).post('credit_cards', { credit_card: card });
       }
     }, {
       key: 'update',
