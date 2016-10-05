@@ -1,6 +1,6 @@
 let service = (Restangular, ApiBase) => {
   return new class PagseguroApi extends ApiBase {
-    fetch() {
+    createSession() {
       return Restangular
         .one('pagseguro')
         .get();
