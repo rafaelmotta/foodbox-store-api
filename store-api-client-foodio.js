@@ -520,12 +520,12 @@ var api = function api(Restangular, ApiBase) {
       }
     }, {
       key: 'update',
-      value: function update(credit_card) {
-        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('credit_cards', card.id).patch({ credit_card: credit_card });
+      value: function update(card) {
+        return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('credit_cards', card.id).patch({ credit_card: card });
       }
     }, {
       key: 'remove',
-      value: function remove(credit_card) {
+      value: function remove(card) {
         return Restangular.one('companies', this.company.id).one('costumers', this.costumer.id).one('credit_cards', card.id).remove();
       }
     }]);
@@ -792,6 +792,11 @@ var service = function service(Restangular, ApiBase) {
       key: 'createSession',
       value: function createSession() {
         return Restangular.one('pagseguro').get();
+      }
+    }, {
+      key: 'pay',
+      value: function pay(cart) {
+        return Restangular.one('pagseguro').post('addresses', { address: address });
       }
     }]);
 

@@ -23,15 +23,15 @@ let api = (Restangular, ApiBase) => {
         .post('credit_cards', { credit_card: card });
     }
 
-    update(credit_card) {
+    update(card) {
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)
         .one('credit_cards', card.id)
-        .patch({ credit_card: credit_card });
+        .patch({ credit_card: card });
     }
 
-    remove(credit_card) {
+    remove(card) {
       return Restangular
         .one('companies', this.company.id)
         .one('costumers', this.costumer.id)

@@ -5,6 +5,12 @@ let service = (Restangular, ApiBase) => {
         .one('pagseguro')
         .get();
     }
+
+    pay(cart) {
+      return Restangular
+        .one('pagseguro')
+        .post('addresses', { address: address });
+    }
   }
 };
 
